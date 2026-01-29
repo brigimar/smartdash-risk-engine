@@ -26,6 +26,7 @@ import {
   RotateCw,
   Trash2
 } from "lucide-react";
+import WizardForm from "@/components/WizardForm";
 import { Link, useLocation } from "wouter";
 import { useEffect } from "react";
 
@@ -88,7 +89,7 @@ export default function Home() {
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-                SmartDash: No te dice qué pasó. Te avisa <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-300">qué está por pasar</span> y cuánto te va a costar si no actuás.
+                SmartDash: Te avisa <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-300">qué está por pasar</span> y cuánto te va a costar si no actuás.
               </h1>
               
               <p className="text-lg text-slate-300 leading-relaxed max-w-xl">
@@ -146,6 +147,42 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Wizard Form Section - Chequeo de Riesgo en 60 Segundos */}
+        <section className="py-24 bg-[#0F172A] border-y border-white/5">
+          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6 lg:sticky lg:top-28">
+              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">
+                ¿Su sistema actual puede avisarle antes de que ocurra una pérdida?
+              </h2>
+              <p className="text-lg text-slate-300">
+                Realice este diagnóstico rápido para verificar compatibilidad y descubra cómo blindar su capital sin cambiar su forma de trabajar.
+              </p>
+              <div className="space-y-4 pt-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="h-6 w-6 text-cyan-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-white">Diagnóstico en 60 Segundos</p>
+                    <p className="text-slate-400 text-sm">Rápido, sin compromiso y enfocado en su realidad.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Shield className="h-6 w-6 text-cyan-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-white">Privacidad Garantizada</p>
+                    <p className="text-slate-400 text-sm">No visualizamos ventas, precios ni datos sensibles. Solo transformamos sus reportes en avisos accionables.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-full">
+              <WizardForm />
+            </div>
+          </div>
+        </section>
+
+        {/* Problem Section - NUEVO ENFOQUE EN RIESGO SISTÉMICO */}
 
         {/* Problem Section - NUEVO ENFOQUE EN RIESGO SISTÉMICO */}
         <section id="problem" className="py-24 bg-red-500/5 border-y border-red-500/10">
