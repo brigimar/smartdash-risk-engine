@@ -28,8 +28,29 @@ import {
 } from "lucide-react";
 import WizardForm from "@/components/WizardForm";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Link, useLocation } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="border border-white/10 rounded-lg overflow-hidden hover:border-cyan-500/50 transition-all">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-colors"
+      >
+        <span className="font-semibold text-white text-left">{question}</span>
+        <span className={`text-cyan-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}>▼</span>
+      </button>
+      {isOpen && (
+        <div className="px-6 py-4 bg-white/5 border-t border-white/10 text-slate-300">
+          {answer}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Home() {
   const { isAuthenticated, loading } = useAuth();
@@ -508,58 +529,98 @@ export default function Home() {
             </div>
           </div>
         </section>
+        {/* Testimonials Section */}
+        <section className="py-24 bg-gradient-to-b from-transparent to-cyan-500/5 border-y border-cyan-500/10">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold">Autoridades que Confían en SmartDash</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+                Empresas y emprendedores que ya están protegiendo su capital
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  quote: "SmartDash nos alertó sobre un desvío de ventas que habría costado $15,000 USD. Actuamos en 2 horas.",
+                  author: "Carlos M.",
+                  role: "CEO, Tienda de eCommerce",
+                  impact: "Pérdida Evitada: $15,000"
+                },
+                {
+                  quote: "Las notificaciones por WhatsApp son game-changer. No tengo que estar pegado a un dashboard.",
+                  author: "María L.",
+                  role: "Vendedora Mercado Libre",
+                  impact: "Tiempo Ahorrado: 5h/semana"
+                },
+                {
+                  quote: "Detectó un shadowban potencial en nuestro canal antes de que Mercado Libre nos penalizara.",
+                  author: "Juan P.",
+                  role: "Gerente de Operaciones",
+                  impact: "Reputación Preservada"
+                }
+              ].map((testimonial, i) => (
+                <div key={i} className="p-6 rounded-2xl bg-slate-900/50 border border-cyan-500/20 hover:border-cyan-500/50 transition-all">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <span key={j} className="text-cyan-400">★</span>
+                    ))}
+                  </div>
+                  <p className="text-slate-300 mb-4 italic">\"{testimonial.quote}\"</p>
+                  <div className="border-t border-white/10 pt-4">
+                    <p className="font-semibold text-white">{testimonial.author}</p>
+                    <p className="text-slate-400 text-sm">{testimonial.role}</p>
+                    <p className="text-cyan-400 text-sm font-semibold mt-2">✓ {testimonial.impact}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs Section */}
+        <section className="py-24 bg-[#0B1120]">
+          <div className="max-w-3xl mx-auto px-4">
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold">Preguntas Frecuentes</h2>
+              <p className="text-slate-400">Todo lo que necesitás saber sobre SmartDash</p>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "¿Cuánto cuesta SmartDash?",
+                  a: "Tenemos un plan gratuito para empezar. Los planes pagos comienzan desde $29/mes. Sin tarjeta de crédito requerida para probar."
+                },
+                {
+                  q: "¿Cuánto tiempo tarda la integración?",
+                  a: "Menos de 5 minutos. No necesitás cambiar nada de tu forma de trabajar. SmartDash se conecta a tus sistemas existentes."
+                },
+                {
+                  q: "¿Qué datos visualiza SmartDash?",
+                  a: "Solo datos operacionales: stock, ventas, precios y métricas de reputación. Nunca vemos datos sensibles como contraseñas o números de tarjeta."
+                },
+                {
+                  q: "¿Funciona con Mercado Libre, Tango y Excel?",
+                  a: "Sí. SmartDash se integra nativamente con Mercado Libre, Tango Gestión, Excel/CSV y AFIP. También soporta otras plataformas."
+                },
+                {
+                  q: "¿Puedo cancelar en cualquier momento?",
+                  a: "Claro. Sin contratos de largo plazo, sin penalizaciones. Cancelás cuando quieras desde tu panel."
+                },
+                {
+                  q: "¿Cómo recibo las alertas?",
+                  a: "Por WhatsApp al instante. También por email si lo prefieres. Configurás el canal que más te convenga."
+                }
+              ].map((faq, i) => (
+                <FAQItem key={i} question={faq.q} answer={faq.a} />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-[#0B1120] border-t border-white/5 py-16">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-          <div className="col-span-2 space-y-6">
-            <div className="flex items-center gap-2">
-              <Shield className="h-6 w-6 text-blue-500" />
-              <span className="text-xl font-bold tracking-tighter">SMARTDASH</span>
-            </div>
-            <p className="text-slate-400 max-w-sm">
-              El sistema nervioso de alertas que protege tu plata. Prevención de pérdidas económicas en tiempo real. Porque tu laburo merece estar seguro.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" title="Twitter">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" title="Instagram">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" title="WhatsApp">
-                <MessageCircle className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-          <div className="space-y-6">
-            <h4 className="font-bold">Producto</h4>
-            <ul className="space-y-4 text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Cómo Funciona</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Risk Engine</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Planes</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-            </ul>
-          </div>
-          <div className="space-y-6">
-            <h4 className="font-bold">Legal</h4>
-            <ul className="space-y-4 text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Privacidad</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Términos</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Cookies</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contacto</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 pt-8 border-t border-white/5">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
-            <p>© {new Date().getFullYear()} SmartDash Risk Engine. Todos los derechos reservados.</p>
-            <p>Hecho con 🇦🇷 en Argentina, para vendedores que no quieren perder guita.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
