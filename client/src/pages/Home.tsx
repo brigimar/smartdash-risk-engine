@@ -27,6 +27,7 @@ import {
   Trash2
 } from "lucide-react";
 import WizardForm from "@/components/WizardForm";
+import Header from "@/components/Header";
 import { Link, useLocation } from "wouter";
 import { useEffect } from "react";
 
@@ -50,34 +51,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0B1120] text-white selection:bg-blue-500/30">
-      {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-[#0B1120]/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Shield className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-xl font-bold tracking-tighter">SMARTDASH</span>
-          </div>
-          
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-            <a href="#" className="hover:text-white transition-colors">Inicio</a>
-            <a href="#problem" className="hover:text-white transition-colors">El Riesgo</a>
-            <a href="#alerts" className="hover:text-white transition-colors">Alertas Core</a>
-            <a href="#solution" className="hover:text-white transition-colors">Cómo Funciona</a>
-            <a href="#pricing" className="hover:text-white transition-colors">Planes</a>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <a href={getLoginUrl()}>
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-white/5">Ingresar</Button>
-            </a>
-            <a href={getLoginUrl()}>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-full">Empezar Gratis</Button>
-            </a>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="pt-20">
         {/* Hero Section - NUEVO POSICIONAMIENTO */}
@@ -149,7 +123,7 @@ export default function Home() {
         </section>
 
         {/* Wizard Form Section - Chequeo de Riesgo en 60 Segundos */}
-        <section className="py-24 bg-[#0F172A] border-y border-white/5">
+        <section id="wizard" className="py-24 bg-[#0F172A] border-y border-white/5">
           <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6 lg:sticky lg:top-28">
               <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">
