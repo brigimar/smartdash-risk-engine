@@ -116,14 +116,14 @@ export default function Home() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <a href={getLoginUrl()}>
+                <a href="/demo">
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 h-14 px-8 rounded-xl text-lg font-semibold group">
-                    Empezá a Prevenir Gratis
+                    Probar Demo Protegida
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </a>
                 <Button size="lg" variant="outline" className="border-white/10 bg-white/5 hover:bg-white/10 h-14 px-8 rounded-xl text-lg font-semibold">
-                  Ver Alertas en WhatsApp
+                  Empezá Gratis
                 </Button>
               </div>
 
@@ -518,7 +518,7 @@ export default function Home() {
             <h2 className="text-4xl lg:text-5xl font-bold">¿Cuánta Guita Estás Perdiendo Hoy?</h2>
             <p className="text-xl text-slate-300">SmartDash te avisa antes de que sea tarde. Empezá a prevenir desastres ahora mismo.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a href={getLoginUrl()}>
+              <a href="/demo">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 h-14 px-8 rounded-xl text-lg font-semibold">
                   Empezá Gratis Ahora
                 </Button>
