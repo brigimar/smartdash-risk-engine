@@ -1,17 +1,18 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
 import { 
   Shield, 
-  AlertTriangle, 
-  TrendingUp, 
-  Zap, 
   CheckCircle2,
   ArrowRight,
-  BarChart3,
-  Bell,
-  Brain
+  Database,
+  Layers,
+  Lock,
+  Globe,
+  Mail,
+  Instagram,
+  Twitter
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useEffect } from "react";
@@ -28,372 +29,262 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      <div className="min-h-screen flex items-center justify-center bg-[#0B1120]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              <Shield className="h-4 w-4" />
-              Prevención de Riesgos para Mercado Libre
+    <div className="min-h-screen bg-[#0B1120] text-white selection:bg-blue-500/30">
+      {/* Header */}
+      <header className="fixed top-0 w-full z-50 bg-[#0B1120]/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <Shield className="h-5 w-5 text-white" />
             </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Evita Penalizaciones Invisibles
-              <br />
-              <span className="text-primary">Antes de que Destruyan tu Negocio</span>
-            </h1>
-            
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              SmartDash Risk Engine traduce las reglas opacas de Mercado Libre en alertas preventivas claras. 
-              Protege tu reputación, evita suspensiones y mantén tu negocio seguro.
-            </p>
+            <span className="text-xl font-bold tracking-tighter">SMARTDASH</span>
+          </div>
+          
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+            <a href="#" className="hover:text-white transition-colors">Home</a>
+            <a href="#features" className="hover:text-white transition-colors">Features</a>
+            <a href="#architecture" className="hover:text-white transition-colors">Architecture</a>
+            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+          </nav>
 
-            <div className="flex gap-4 justify-center pt-4">
-              <a href={getLoginUrl()}>
-                <Button size="lg" className="gap-2">
-                  Comenzar Gratis
-                  <ArrowRight className="h-4 w-4" />
+          <div className="flex items-center gap-4">
+            <a href={getLoginUrl()}>
+              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-white/5">Login</Button>
+            </a>
+            <a href={getLoginUrl()}>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-full">Sign Up</Button>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="relative py-24 lg:py-32 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 relative z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+                Multi-tenancy Libre SMEs & NestJS & Supabase
+              </div>
+              <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                SMARTDASH: Unlocking for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">E-commerce Growth</span>
+              </h1>
+              <p className="text-lg text-slate-400 leading-relaxed max-w-xl">
+                Una arquitectura robusta basada en NestJS y Supabase que garantiza seguridad, escalabilidad y mitigación de riesgos en tiempo real para vendedores y agencias.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a href={getLoginUrl()}>
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 h-14 px-8 rounded-xl text-lg font-semibold group">
+                    Get Started Free
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </a>
+                <Button size="lg" variant="outline" className="border-white/10 bg-white/5 hover:bg-white/10 h-14 px-8 rounded-xl text-lg font-semibold">
+                  Documentation
                 </Button>
-              </a>
-              <Link href="/knowledge">
-                <Button size="lg" variant="outline">
-                  Ver Base de Conocimiento
-                </Button>
-              </Link>
+              </div>
             </div>
 
-            <p className="text-sm text-muted-foreground">
-              Plan gratuito disponible • No requiere tarjeta de crédito
-            </p>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-blue-500/20 blur-3xl rounded-full opacity-50"></div>
+              <img 
+                src="https://raw.githubusercontent.com/brigimar/smartdash-risk-engine/main/attached_assets/hero-illustration.png" 
+                alt="SmartDash Security Illustration" 
+                className="relative z-10 w-full drop-shadow-2xl"
+                onError={(e) => {
+                  e.currentTarget.src = "https://illustrations.popsy.co/white/security.svg";
+                }}
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Problem Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              El Problema que Nadie Más Resuelve
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Mercado Libre penaliza automáticamente, con reglas opacas y sin avisar. 
-              Cuando te enteras, ya es tarde.
-            </p>
+        {/* Profiles Section */}
+        <section id="features" className="py-24 bg-white/5">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold">Seamless Integration & Payments</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                Soluciones especializadas para cada actor del ecosistema de Mercado Libre.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Vendedores de ML",
+                  desc: "Monitoreo crítico de vulnerabilidades y prevención de penalizaciones silenciosas.",
+                  icon: Shield
+                },
+                {
+                  title: "PYMEs",
+                  desc: "Integración de datos heterogéneos (ERP, Excel) y orquestación de flujos de trabajo.",
+                  icon: Layers
+                },
+                {
+                  title: "Estudios Contables",
+                  desc: "Gestión multi-inquilino segura con segregación de datos mediante RLS.",
+                  icon: Lock
+                }
+              ].map((profile, i) => (
+                <Card key={i} className="bg-[#1E293B]/50 border-white/5 hover:border-blue-500/50 transition-all group">
+                  <CardHeader>
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <profile.icon className="h-6 w-6 text-blue-400" />
+                    </div>
+                    <CardTitle className="text-xl text-white">{profile.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-400">{profile.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-red-200 dark:border-red-900">
-              <CardHeader>
-                <AlertTriangle className="h-10 w-10 text-red-500 mb-2" />
-                <CardTitle>Penalizaciones Silenciosas</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  ML reduce tu visibilidad sin notificarte (shadowban). Una tasa de cancelaciones del 5% puede destruir meses de trabajo.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-orange-200 dark:border-orange-900">
-              <CardHeader>
-                <AlertTriangle className="h-10 w-10 text-orange-500 mb-2" />
-                <CardTitle>Reglas Opacas</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  "Restricción", "suspensión", "bloqueo"... ¿cuál es la diferencia? Nadie lo explica claramente hasta que te pasa.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-yellow-200 dark:border-yellow-900">
-              <CardHeader>
-                <AlertTriangle className="h-10 w-10 text-yellow-500 mb-2" />
-                <CardTitle>Riesgo Acumulativo</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  No es un evento puntual. Cada pequeño error se acumula hasta que ML toma acción drástica.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Cómo Te Protegemos
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              No predecimos el futuro. Evitamos que el pasado se repita.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card>
-              <CardHeader>
-                <BarChart3 className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Risk Score en Tiempo Real</CardTitle>
-                <CardDescription>
-                  Calcula tu nivel de riesgo (Bajo/Medio/Alto/Crítico) basado en múltiples factores
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Monitoreo continuo de cancelaciones, reclamos y stock
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Umbrales críticos personalizables
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Historial de evolución para detectar tendencias
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <Bell className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Alertas Preventivas Inteligentes</CardTitle>
-                <CardDescription>
-                  Te avisamos ANTES de que ML penalice, no después
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Priorización automática por urgencia
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Notificaciones vía email y WhatsApp
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Traducción de reglas opacas a acciones claras
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <Brain className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Asistente Preventivo con IA</CardTitle>
-                <CardDescription>
-                  Aprende de tu comportamiento y sugiere acciones contextuales
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Sugerencias basadas en tu historial
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Aprendizaje reflejado: "Las últimas 2 veces que ignoraste..."
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Lenguaje claro, no técnico
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <Zap className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Panel Multi-cuenta</CardTitle>
-                <CardDescription>
-                  Perfecto para agencias que gestionan múltiples vendedores
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Vista consolidada de todas las cuentas
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Filtros por nivel de riesgo
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Reportes automáticos semanales/mensuales
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Planes Simples y Transparentes
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Comienza gratis, escala cuando lo necesites
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Gratuito</CardTitle>
-                <div className="text-3xl font-bold">$0</div>
-                <CardDescription>Para probar la plataforma</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    1 cuenta de ML
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Risk Score básico
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    5 alertas/mes
-                  </li>
-                </ul>
-                <a href={getLoginUrl()}>
-                  <Button variant="outline" className="w-full">Comenzar</Button>
-                </a>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Starter</CardTitle>
-                <div className="text-3xl font-bold">$29<span className="text-sm font-normal">/mes</span></div>
-                <CardDescription>Para vendedores individuales</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Hasta 3 cuentas
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Alertas ilimitadas
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Asistente IA básico
-                  </li>
-                </ul>
-                <a href={getLoginUrl()}>
-                  <Button variant="outline" className="w-full">Elegir Plan</Button>
-                </a>
-              </CardContent>
-            </Card>
-
-            <Card className="border-primary shadow-lg">
-              <CardHeader>
-                <div className="inline-flex px-2 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold mb-2">
-                  Más Popular
+        {/* Architecture Section */}
+        <section id="architecture" className="py-24">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="bg-gradient-to-b from-blue-600/20 to-transparent p-12 rounded-[3rem] border border-white/5">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="space-y-8">
+                  <h2 className="text-4xl lg:text-6xl font-bold tracking-tight">Multi-Tenant Scale Architectures</h2>
+                  <div className="space-y-6">
+                    <div className="flex gap-4">
+                      <div className="shrink-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                        <CheckCircle2 className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg">NestJS Framework</h4>
+                        <p className="text-slate-400">Arquitectura modular orientada a microservicios para máxima escalabilidad.</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="shrink-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                        <CheckCircle2 className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg">Supabase & RLS</h4>
+                        <p className="text-slate-400">Seguridad a nivel de fila (Row Level Security) para aislamiento total de datos.</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="shrink-0 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                        <CheckCircle2 className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg">Risk Scoring Engine</h4>
+                        <p className="text-slate-400">Cálculo en tiempo real desacoplado mediante colas de mensajes resilientes.</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <CardTitle>Professional</CardTitle>
-                <div className="text-3xl font-bold">$79<span className="text-sm font-normal">/mes</span></div>
-                <CardDescription>Para agencias ML-first</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Hasta 10 cuentas
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    IA completa + WhatsApp
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Dashboard multi-cuenta
-                  </li>
-                </ul>
-                <a href={getLoginUrl()}>
-                  <Button className="w-full">Elegir Plan</Button>
-                </a>
-              </CardContent>
-            </Card>
+                <div className="relative">
+                  <div className="aspect-square bg-blue-500/10 rounded-full blur-3xl absolute inset-0"></div>
+                  <div className="relative bg-[#0B1120] border border-white/10 p-8 rounded-3xl shadow-2xl">
+                    <div className="flex flex-col items-center gap-8">
+                      <div className="px-6 py-3 bg-blue-600 rounded-xl font-bold">Supabase</div>
+                      <div className="grid grid-cols-2 gap-4 w-full">
+                        <div className="p-4 bg-white/5 rounded-xl border border-white/5 text-center text-sm">Risk Engine</div>
+                        <div className="p-4 bg-white/5 rounded-xl border border-white/5 text-center text-sm">ML Integration</div>
+                        <div className="p-4 bg-white/5 rounded-xl border border-white/5 text-center text-sm">SME Dashboard</div>
+                        <div className="p-4 bg-white/5 rounded-xl border border-white/5 text-center text-sm">Audit Logs</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Enterprise</CardTitle>
-                <div className="text-3xl font-bold">$199<span className="text-sm font-normal">/mes</span></div>
-                <CardDescription>Para grandes operaciones</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Cuentas ilimitadas
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    API access
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5" />
-                    Account manager
-                  </li>
-                </ul>
-                <a href={getLoginUrl()}>
-                  <Button variant="outline" className="w-full">Contactar</Button>
-                </a>
-              </CardContent>
-            </Card>
+        {/* Pricing Section */}
+        <section id="pricing" className="py-24 bg-white/5">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold">Flexible Plans for Every Need</h2>
+              <p className="text-slate-400">Escala tu gestión de riesgos según el tamaño de tu operación.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { name: "Starter", price: "49", features: ["1 Mercado Libre Account", "Basic Reports", "Risk Alerts", "Email Support"] },
+                { name: "Growth", price: "140", features: ["Up to 10 Accounts", "Advanced IA Insights", "Priority Support", "WhatsApp Alerts"], popular: true },
+                { name: "Enterprise", price: "Custom", features: ["Unlimited Accounts", "API Access", "Dedicated Manager", "SLA Guarantee"] }
+              ].map((plan, i) => (
+                <div key={i} className={`relative p-8 rounded-3xl border ${plan.popular ? 'border-blue-500 bg-blue-500/5' : 'border-white/5 bg-[#1E293B]/50'} space-y-6`}>
+                  {plan.popular && <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 rounded-full text-xs font-bold uppercase">Most Popular</div>}
+                  <div>
+                    <h3 className="text-xl font-bold">{plan.name}</h3>
+                    <div className="mt-4 flex items-baseline">
+                      <span className="text-4xl font-bold">${plan.price}</span>
+                      {plan.price !== "Custom" && <span className="ml-1 text-slate-400">/month</span>}
+                    </div>
+                  </div>
+                  <ul className="space-y-4">
+                    {plan.features.map((f, j) => (
+                      <li key={j} className="flex items-center gap-3 text-slate-300 text-sm">
+                        <CheckCircle2 className="h-4 w-4 text-blue-500" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className={`w-full h-12 rounded-xl font-bold ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : 'bg-white/10 hover:bg-white/20 text-white'}`}>
+                    {plan.price === "Custom" ? "Contact Sales" : "Sign Up Now"}
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-[#0B1120] border-t border-white/5 py-16">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12">
+          <div className="col-span-2 space-y-6">
+            <div className="flex items-center gap-2">
+              <Shield className="h-6 w-6 text-blue-500" />
+              <span className="text-xl font-bold tracking-tighter">SMARTDASH</span>
+            </div>
+            <p className="text-slate-400 max-w-sm">
+              Protegiendo el crecimiento del e-commerce con tecnología de vanguardia y análisis de riesgos en tiempo real.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"><Twitter className="h-5 w-5" /></a>
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"><Instagram className="h-5 w-5" /></a>
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"><Globe className="h-5 w-5" /></a>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <h4 className="font-bold">Product</h4>
+            <ul className="space-y-4 text-slate-400 text-sm">
+              <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Architecture</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
+            </ul>
+          </div>
+          <div className="space-y-6">
+            <h4 className="font-bold">Legal</h4>
+            <ul className="space-y-4 text-slate-400 text-sm">
+              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
+            </ul>
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Deja de Apagar Fuegos. Empieza a Prevenirlos.
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Únete a las agencias y vendedores que ya protegen su negocio con SmartDash
-          </p>
-          <a href={getLoginUrl()}>
-            <Button size="lg" className="gap-2">
-              Comenzar Gratis Ahora
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </a>
+        <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5 text-center text-slate-500 text-sm">
+          © {new Date().getFullYear()} SmartDash Risk Engine. All rights reserved.
         </div>
-      </section>
+      </footer>
     </div>
   );
 }
