@@ -18,7 +18,13 @@ import {
   TrendingDown,
   DollarSign,
   Brain,
-  Zap
+  Zap,
+  Package,
+  TrendingUp,
+  Tag,
+  Eye,
+  RotateCw,
+  Trash2
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useEffect } from "react";
@@ -56,6 +62,7 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
             <a href="#" className="hover:text-white transition-colors">Inicio</a>
             <a href="#problem" className="hover:text-white transition-colors">El Riesgo</a>
+            <a href="#alerts" className="hover:text-white transition-colors">Alertas Core</a>
             <a href="#solution" className="hover:text-white transition-colors">Cómo Funciona</a>
             <a href="#pricing" className="hover:text-white transition-colors">Planes</a>
           </nav>
@@ -370,6 +377,105 @@ export default function Home() {
                   </Button>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Core Alerts Section - El Escudo del Negocio */}
+        <section id="alerts" className="py-24 bg-gradient-to-b from-cyan-500/5 to-transparent border-y border-cyan-500/10">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center space-y-4 mb-20">
+              <h2 className="text-3xl lg:text-5xl font-bold">El Escudo de su Negocio</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+                Seis defensas proactivas que protegen su capital. Cada alerta es una oportunidad para evitar pérdidas reales.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  num: "01",
+                  title: "Stock Crítico de Best Sellers",
+                  desc: "Monitoreo de niveles mínimos en sus productos de alta rotación.",
+                  impact: "Evita lucro cesante por falta de productos estrella",
+                  icon: Package,
+                  color: "from-cyan-400 to-blue-400"
+                },
+                {
+                  num: "02",
+                  title: "Desvío Anormal de Ventas",
+                  desc: "Detección de caídas de facturación fuera de la estacionalidad prevista.",
+                  impact: "Reacción inmediata ante cambios en el mercado o competencia",
+                  icon: TrendingDown,
+                  color: "from-blue-400 to-purple-400"
+                },
+                {
+                  num: "03",
+                  title: "Inconsistencia en Precios",
+                  desc: "Identificación de errores en etiquetas o precios fuera de rango.",
+                  impact: "Protege el margen de ganancia frente a fallas humanas",
+                  icon: Tag,
+                  color: "from-purple-400 to-pink-400"
+                },
+                {
+                  num: "04",
+                  title: "Vigilancia de Reputación",
+                  desc: "Alerta temprana sobre métricas que comprometen su visibilidad en plataformas.",
+                  impact: "Evita penalizaciones y degradación de categoría (Gold/Plata)",
+                  icon: Eye,
+                  color: "from-pink-400 to-red-400"
+                },
+                {
+                  num: "05",
+                  title: "Anomalías en Devoluciones",
+                  desc: "Detección de picos en reclamos o fallas logísticas recurrentes.",
+                  impact: "Reduce costos operativos por logística inversa",
+                  icon: RotateCw,
+                  color: "from-red-400 to-orange-400"
+                },
+                {
+                  num: "06",
+                  title: "Optimización de Capital",
+                  desc: "Identificación de productos sin rotación ('muertos') en los últimos 30 días.",
+                  impact: "Libera flujo de caja inmovilizado en stock obsoleto",
+                  icon: Trash2,
+                  color: "from-orange-400 to-yellow-400"
+                }
+              ].map((alert, i) => {
+                const IconComponent = alert.icon;
+                return (
+                  <div key={i} className="group relative p-6 rounded-2xl bg-[#1E293B]/50 border border-cyan-500/20 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/5 group-hover:to-cyan-500/10 rounded-2xl transition-all duration-300"></div>
+                    
+                    <div className="relative z-10 space-y-4">
+                      <div className="flex items-start justify-between">
+                        <span className="text-4xl font-bold text-cyan-400/40 group-hover:text-cyan-400/60 transition-colors">{alert.num}</span>
+                        <div className={`p-3 rounded-lg bg-gradient-to-br ${alert.color} opacity-80 group-hover:opacity-100 transition-opacity`}>
+                          <IconComponent className="h-5 w-5 text-white" />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <h3 className="font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">{alert.title}</h3>
+                        <p className="text-sm text-slate-400 leading-relaxed">{alert.desc}</p>
+                      </div>
+                      
+                      <div className="pt-4 border-t border-white/10">
+                        <p className="text-xs font-semibold text-cyan-400 uppercase tracking-wider">💰 Valor de Negocio</p>
+                        <p className="text-sm text-slate-300 mt-2 leading-relaxed">{alert.impact}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-16 p-6 bg-cyan-500/10 border border-cyan-500/30 rounded-2xl text-center">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <MessageCircle className="h-5 w-5 text-cyan-400" />
+                <p className="font-semibold text-white">Todas estas notificaciones llegan directamente a su WhatsApp</p>
+              </div>
+              <p className="text-slate-400 text-sm">Sin aplicaciones pesadas, sin configuraciones complejas. Recibe alertas críticas al instante en el canal que ya usas.</p>
             </div>
           </div>
         </section>
