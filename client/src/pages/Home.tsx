@@ -29,6 +29,7 @@ import {
 import WizardForm from "@/components/WizardForm";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ComparisonSection from "@/components/ComparisonSection";
 import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
 
@@ -618,6 +619,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Comparison Section */}
+        <ComparisonSection />
       </main>
 
       <Footer />
